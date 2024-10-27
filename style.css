@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary: #2c4875;
+    --secondary: #ffd380;
+    --light: #ffffff;
+    --dark: #00202e;
+}
+
+body {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    background: var(--primary);
+    color: var(--light);
+    margin: 0;
+    min-height: 100vh;
+    background: #00202e;
+    background: linear-gradient(#00202e 96px, #003f5c, #2c4875, #8a508f);
+    /*background: 
+        radial-gradient(farthest-side at 120vw 120vh, transparent, #00202e),
+        linear-gradient(#00202e 96px, #003f5c, #2c4875, #8a508f);
+    */
+}
+
+a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, #title {
+    color: var(--secondary);
+    margin-top: 2em;
+    line-height: 1em;
+    font-weight: bold;
+}
+
+#title {
+    margin: 0;
+    font-size: 24px;
+}
+
+h1 {
+    font-size: 48px;
+    margin-top: 0em;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+
+p {
+    line-height: 1.5em;
+}
+
+.content {
+    max-width: 768px;
+    margin: auto;
+    padding: 16px 32px;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background: var(--dark);
+    box-shadow: 0 0 10px -2px var(--dark);
+}
+
+header > .content {
+    display: flex;
+    justify-content: space-between;
+}
+
+#title-container {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+#logo {
+    height: 64px;
+}
+
+nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+main {
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+code {
+    font-size: 16px;
+}
+
+pre {
+    display: block;
+    font-family: 'Fira Code', monospace;
+    font-family: monospace;
+    background: var(--dark);
+    box-shadow: 0 0 10px -2px var(--dark);
+    padding: 32px;
+    border-radius: 32px;
+}
+
+p code {
+    background: var(--dark);
+    box-shadow: 0 0 10px -2px var(--dark);
+    padding: 1px 4px;
+    margin: 0 2px;
+    border-radius: 4px;
+}
+
+
+
+.progressbar-containter {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.progressbar {
+    margin-top: 4px;
+    width: 100%;
+    height: 32px;
+    border-radius: 16px;
+    background: var(--dark);
+    box-shadow: 0 0 10px -2px var(--dark);
+}
+
+.progressbar-bar {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+    color: var(--dark)
+}
+
+
+.step {
+    background: var(--dark);
+    box-shadow: 0 0 10px -2px var(--dark);
+    padding: 32px;
+    border-radius: 32px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.step .step-number {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--secondary);
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.step .step-title {
+    color: var(--secondary);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.step .step-description {
+    margin-bottom: 0;
+}
+
+
+.button {
+    display: inline-block;
+    padding: 16px;
+    background: var(--secondary);
+    box-shadow: 0 0 10px -2px var(--dark);
+    border-radius: 16px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: var(--dark);
+    font-weight: bold;
+}
+
+.button.secondary {
+    background: var(--primary);
+    color: var(--light);
+}
+
+.button + .button {
+    margin-left: 1em;
+}
+
+pre.highlight {
+    overflow-x: auto;
+}
