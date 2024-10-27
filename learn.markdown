@@ -93,7 +93,9 @@ Nova Forms provides lots of types that can be used right away:
 
 If none of these types fit your needs, you can easily implement your own type by using the `Datatype` Trait.
 
-## Form Components
+## Provided Components
+
+Nova Forms comes with lots of useful components to easily build your form, and integration is incredibly easy!
 
 ### File Uploads
 
