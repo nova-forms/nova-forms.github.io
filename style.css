@@ -16,10 +16,6 @@ body {
     min-height: 100vh;
     background: #00202e;
     background: linear-gradient(#00202e 96px, #003f5c, #2c4875, #8a508f);
-    /*background: 
-        radial-gradient(farthest-side at 120vw 120vh, transparent, #00202e),
-        linear-gradient(#00202e 96px, #003f5c, #2c4875, #8a508f);
-    */
 }
 
 a {
@@ -46,6 +42,10 @@ h1 {
 
 h2 {
     font-size: 32px;
+}
+
+h3 {
+    font-size: 18px;
 }
 
 
@@ -113,8 +113,6 @@ p code {
     margin: 0 2px;
     border-radius: 4px;
 }
-
-
 
 .progressbar-containter {
     margin-top: 1em;
@@ -205,4 +203,9 @@ p code {
 
 pre.highlight {
     overflow-x: auto;
+}
+
+pre.highlight code {
+    display: inline-block;
+    margin-right: 32px;
 }

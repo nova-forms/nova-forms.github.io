@@ -22,11 +22,11 @@ From form input, translation, validation, submission to PDF rendering, we got yo
 
 ## Made For The Web
 
-Nova Forms uses the <a href="https://www.rust-lang.org/">Rust Programming Language</a>.
+Nova Forms makes heavy use of the [Rust programming language](https://www.rust-lang.org/) and it's features. Rust code can be compiled to [WebAssembly](https://www.rust-lang.org/what/wasm) which allows running interactive websites on the browser, entirely without JavaScript!
 
 ## Blazingly Fast
 
-Nova Forms is built on top of <a href="https://leptos.dev">Leptos</a>, a cutting-edge Rust framework for the modern web.
+Nova Forms is built on top of [Leptos](https://leptos.dev), a cutting-edge Rust framework for the modern web.
 This not only makes Nova Forms extremely fast, but also saves server costs.
 
 <div>

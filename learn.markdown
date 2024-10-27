@@ -69,3 +69,48 @@ Finally, we associate the server action with the form to send the form data on s
 That's it, you have just created your first Nova Form.
 What we've seen so far is very similar to Leptos' `<ActionForm>`.
 Of course, this only scratches the surface of what's possible with Nova Forms.
+
+## Type-Based Validation
+
+We have already seen that the `<Input>` component takes a type.
+This type is used for validation as well as for determining the input type and additional input attributes.
+Nova Forms provides lots of types that can be used right away:
+
+* `String`
+* `NonEmptyString`
+* `u8` up to `u128`
+* `i8` up to `i128`
+* `BigInt`
+* `BigRational`
+* `bool`
+* `Accept`
+* `Date`
+* `Time`
+* `DateTime`
+* `Telephone`
+* `Email`
+* `Option<`Type`>`
+
+If none of these types fit your needs, you can easily implement your own type by using the `Datatype` Trait.
+
+## Form Components
+
+### File Uploads
+
+The `<FileUpload>` component handles file uploads for you.
+Simply add the component and files will be automatically added to a database.
+A `FileId` is passed with the form data so you can easily retrieve the file binaries from the database again.
+
+### Repeatables
+
+Easily add repeatable elements with the `<Repeatable>` component.
+You can bind the component to a `Vec` in your form data that contains the input of the repeated fields.
+
+### Pagination
+
+If your form gets large, you can add pagination with the `<Pages>` component.
+Simply wrap parts of your form into a `<Page>` to add a new page to your form.
+
+## PDF Rendering
+
+Nova Forms provides an easy way to render your form to a PDF. Simply pass your form component alongside with the form data to the `PdfGen` module, and out comes a beautiful, accessible PDF. This makes it easy to integrate Nova Forms with existing business flows.

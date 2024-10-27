@@ -7,7 +7,7 @@
     font-weight: bold;
 }
 
-.highlight .nb {
+.highlight .nb, .highlight .nt {
     color: #ff6361;
 }
 
@@ -16,7 +16,7 @@
     color: #ffa600;
 }
 
-.highlight .s {
+.highlight .s, .highlight .s1 {
     color: #ff8531;
 }
 
