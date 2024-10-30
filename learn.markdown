@@ -44,6 +44,7 @@ async fn on_submit(
 
 The form component determines how the form will be rendered for both the web and PDF.
 We use the `view!` macro provided by Leptos to build a form.
+This makes it especially easy for Rust newbies to learn Nova Forms as the syntax is very similar to HTML.
 
 ```rust
 #[component]
@@ -74,7 +75,7 @@ Of course, this only scratches the surface of what's possible with Nova Forms.
 
 We have already seen that the `<Input>` component takes a type.
 This type is used for validation as well as for determining the input type and additional input attributes.
-Nova Forms provides lots of types that can be used right away:
+Nova Forms provides lots of types that can be used right away. If none of these types fit your needs, you can easily implement your own type by using the `Datatype` Trait.
 
 * `String`
 * `NonEmptyString`
@@ -91,9 +92,25 @@ Nova Forms provides lots of types that can be used right away:
 * `Email`
 * `Option<`Type`>`
 
-If none of these types fit your needs, you can easily implement your own type by using the `Datatype` Trait.
+The only thing that is left to do is to provide custom validation error messages.
 
-## Provided Components
+```rust
+#[component]
+fn MyForm() {
+    provide_translation(move |err| match err {
+        EmailError::InvalidFormat =>
+            "Whoops, seems like you entered an invalid email!"
+    });
+
+    view! {
+        <NovaForm>
+            <Input<Email> label="Email" bind="email" />
+        </NovaForm>
+    }
+}
+```
+
+## Nova Forms Components
 
 Nova Forms comes with lots of useful components to easily build your form, and integration is incredibly easy!
 
@@ -103,16 +120,128 @@ The `<FileUpload>` component handles file uploads for you.
 Simply add the component and files will be automatically added to a database.
 A `FileId` is passed with the form data so you can easily retrieve the file binaries from the database again.
 
+
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, Default)]
+struct MyForm {
+    files: Vec<FileId>
+}
+
+#[component]
+fn MyForm() {
+    view! {
+        <NovaForm>
+            <FileUpload label="File Upload" bind="files" />
+        </NovaForm>
+    }
+}
+```
+
 ### Repeatables
 
 Easily add repeatable elements with the `<Repeatable>` component.
 You can bind the component to a `Vec` in your form data that contains the input of the repeated fields.
 
+```rust
+#[derive(Serialize, Deserialize, Clone, Debug, Default)]
+struct MyForm {
+    repeatable: Vec<FileId>
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, Default)]
+struct Element {
+    first_name: String,
+    last_name: String,
+}
+
+#[component]
+fn MyForm() {
+    view! {
+        <NovaForm>
+            <Repeatable bind="repeatable" itemitem = move |idx| view! {
+                <Input<NonEmptyString> label="First Name" bind="first_name" />
+                <Input<NonEmptyString> label="Last Name" bind="last_name" />
+            } />
+        </NovaForm>
+    }
+}
+```
+
 ### Pagination
 
 If your form gets large, you can add pagination with the `<Pages>` component.
 Simply wrap parts of your form into a `<Page>` to add a new page to your form.
+You can add control elements by adding a `<PageStepper>`.
+
+```rust
+
+#[component]
+fn MyForm() {
+    view! {
+        <NovaForm>
+            <Pages>
+                <Page id="first-page" label="First Page">
+                    <h1>"First Page"</h1>
+                </Page>
+                <Page id="second-page" label="Second Page">
+                    <h1>"Second Page"</h1>
+                </Page>
+                <Page id="third-page" label="Third Page">
+                    <h1>"Third Page"</h1>
+                </Page>
+            </Pages>
+            <PageStepper />
+        </NovaForm>
+    }
+}
+```
 
 ## PDF Rendering
 
 Nova Forms provides an easy way to render your form to a PDF. Simply pass your form component alongside with the form data to the `PdfGen` module, and out comes a beautiful, accessible PDF. This makes it easy to integrate Nova Forms with existing business flows.
+
+```rust
+#[server]
+async fn on_submit(form_data: DemoForm, meta_data: MetaData) -> Result<(), ServerFnError> {
+    use crate::app::NovaFormsContextProvider;
+
+    let pdf_gen = expect_context::<PdfGen>();
+    let output_path = pdf_gen
+        .render_form(move || {
+            view! {
+                <NovaFormsContextProvider meta_data=meta_data>
+                    <DemoForm form_data=form_data />
+                </NovaFormsContextProvider>
+            }
+        })
+        .await?;
+
+    println!("form successfully rendered: {:?}", output_path);
+
+    Ok(())
+}
+```
+
+## Translations
+
+Nova Forms comes with translations by default.
+use the `t!` macro instead of a plain string to add translations.
+The translations are checked at compile time, meaning you never forget a translation again!
+
+Use the powerful [i18n Ally](https://github.com/lokalise/i18n-ally) tool to edit translations within VS Code.
+It even allows you to automatically generate missing translations by integrating the [DeepL API](https://www.deepl.com/).
+
+
+```rust
+#[component]
+fn MyForm() {
+    let i18n = use_i18n();
+
+    view! {
+        <NovaForm on_submit=submit_action>
+            <Input<String> label=t!(i18n, first_name) bind="first_name" />
+            <Input<String> label=t!(i18n, first_name) bind="last_name" />
+        </NovaForm>
+    }
+}
+```

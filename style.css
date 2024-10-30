@@ -190,10 +190,22 @@ p code {
     margin-bottom: 1em;
     color: var(--dark);
     font-weight: bold;
+    transition: all 200ms;
+}
+
+.button:hover {
+    transform: scale(1.1);
+}
+
+.button:active {
+    transform: scale(0.9);
 }
 
 .button.secondary {
-    background: var(--primary);
+    /*background: var(--primary);
+    color: var(--light);*/
+    border: 1px solid var(--secondary);
+    background: none;
     color: var(--light);
 }
 
