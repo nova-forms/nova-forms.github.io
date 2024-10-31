@@ -48,5 +48,7 @@ That was already it! You can continue from this starter template to build your o
 
 We highly recommend using [VS Code](https://code.visualstudio.com/) for development alongside with the recommended plugins. The plugins will be automatically recommended to you once you open the starter template.
 
-<a class="button" href="https://docs.rs/nova-forms/latest/nova_forms/">Documentation</a>
-<a class="button" href="https://github.com/nova-forms/nova-forms-demo">Demo Project</a>
+<div class="button-row">
+    <a class="button" href="https://docs.rs/nova-forms/latest/nova_forms/">Documentation</a>
+    <a class="button" href="https://github.com/nova-forms/nova-forms-demo">Demo Project</a>
+</div>

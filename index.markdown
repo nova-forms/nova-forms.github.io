@@ -7,9 +7,11 @@ layout: default
 Nova Forms is a modern solution for creating beautiful and fast online forms.
 Create a fully featured form in minutes.
 
-<a class="button" href="/nova-forms-demo">Demo Form</a>
-<a class="button secondary" href="/start">Getting Started</a>
-<a class="button secondary" href="/learn">Learn More</a>
+<div class="button-row">
+    <a class="button" href="/nova-forms-demo">Demo Form</a>
+    <a class="button secondary" href="/start">Getting Started</a>
+    <a class="button secondary" href="/learn">Learn More</a>
+</div>
 
 ## Fully Featured
 
