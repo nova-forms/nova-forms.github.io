@@ -90,7 +90,7 @@ Nova Forms provides lots of types that can be used right away. If none of these 
 * `DateTime`
 * `Telephone`
 * `Email`
-* `Option<`Type`>`
+* `Option<T>`
 
 The only thing that is left to do is to provide custom validation error messages.
 
@@ -113,6 +113,8 @@ fn MyForm() {
 ## Nova Forms Components
 
 Nova Forms comes with lots of useful components to easily build your form, and integration is incredibly easy!
+In the following section we go over the most useful ones, but keep in mind that there are many more.
+For a full overview of all components, please refer to the documentation.
 
 ### File Uploads
 
