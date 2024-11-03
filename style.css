@@ -92,28 +92,6 @@ main {
     padding-bottom: 64px;
 }
 
-code {
-    font-size: 16px;
-}
-
-pre {
-    display: block;
-    font-family: 'Fira Code', monospace;
-    font-family: monospace;
-    background: var(--dark);
-    box-shadow: 0 0 10px -2px var(--dark);
-    padding: 32px;
-    border-radius: 32px;
-}
-
-p code {
-    background: var(--dark);
-    box-shadow: 0 0 10px -2px var(--dark);
-    padding: 1px 4px;
-    margin: 0 2px;
-    border-radius: 4px;
-}
-
 .progressbar-containter {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -190,22 +168,60 @@ p code {
     margin-bottom: 1em;
     color: var(--dark);
     font-weight: bold;
+    transition: all 200ms;
+}
+
+.button:hover {
+    transform: scale(1.1);
+}
+
+.button:active {
+    transform: scale(0.9);
 }
 
 .button.secondary {
-    background: var(--primary);
+    /*background: var(--primary);
+    color: var(--light);*/
+    border: 1px solid var(--secondary);
+    background: none;
     color: var(--light);
 }
 
-.button + .button {
-    margin-left: 1em;
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
-pre.highlight {
-    overflow-x: auto;
+.button-row .button {
+    margin: 0;
 }
 
-pre.highlight code {
+.highlighter-rouge {
+    font-family: 'Fira Code', monospace;
+    background: var(--dark);
+    box-shadow: 0 0 10px -2px var(--dark);
+}
+
+code.highlighter-rouge {
     display: inline-block;
-    margin-right: 32px;
+    font-size: 16px;
+    padding: 1px 4px;
+    margin: 0 2px;
+    border-radius: 4px;
+}
+
+div.highlighter-rouge {
+    display: block;
+    box-shadow: 0 0 10px -2px var(--dark);
+    padding: 32px;
+    border-radius: 32px;
+}
+
+div.highlighter-rouge > .highlight {
+    overflow: auto;
+}
+
+pre {
+    margin: 0;
 }
