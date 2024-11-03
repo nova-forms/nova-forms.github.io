@@ -147,7 +147,7 @@ You can bind the component to a `Vec` in your form data that contains the input 
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug, Default)]
 struct MyForm {
-    repeatable: Vec<FileId>
+    repeatable: Vec<Element>
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, Default)]
@@ -207,14 +207,11 @@ Nova Forms provides an easy way to render your form to a PDF. Simply pass your f
 async fn on_submit(form_data: DemoForm, meta_data: MetaData) -> Result<(), ServerFnError> {
     use crate::app::NovaFormsContextProvider;
 
-    let pdf_gen = expect_context::<PdfGen>();
-    let output_path = pdf_gen
-        .render_form(move || {
-            view! {
-                <NovaFormsContextProvider meta_data=meta_data>
-                    <DemoForm form_data=form_data />
-                </NovaFormsContextProvider>
-            }
+    let output_path = expect_context::<PdfGen>()
+        .render_form(move || view! {
+            <RenderContextProvider form_data=form_data meta_data=meta_data>
+                <DemoForm />
+            </RenderContextProvider>
         })
         .await?;
 
