@@ -161,8 +161,8 @@ fn MyForm() {
     view! {
         <NovaForm>
             <Repeatable bind="repeatable" itemitem = move |idx| view! {
-                <Input<NonEmptyString> label="First Name" bind="first_name" />
-                <Input<NonEmptyString> label="Last Name" bind="last_name" />
+                <Input<String> label="First Name" bind="first_name" />
+                <Input<String> label="Last Name" bind="last_name" />
             } />
         </NovaForm>
     }
