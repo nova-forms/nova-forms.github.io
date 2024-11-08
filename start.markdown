@@ -28,12 +28,10 @@ npm install -g pagedjs-cli pagedjs
 
 ## Starter Template
 
-*The following sections are work in progress and may not work just yet.*
-
 We provide a starter template to quickly set up new projects. Run the following command to generate a new project.
 
 ```sh
-cargo leptos new --git nova-forms/start
+cargo leptos new --git nova-forms/nova-forms-template
 ```
 
 Change into your new project directory and compile it with automatic rebuilds and browser live-reload.
